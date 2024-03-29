@@ -7,15 +7,20 @@ from langchain_community.agent_toolkits import create_sql_agent
 from langchain_openai import ChatOpenAI
 import openai
 
+import openai
+
 def classify_query(query, openai_api_key):
     openai.api_key = openai_api_key
-    response = openai.ChatCompletion.create(
-        model="text-davinci-003",  # Or whichever model you're using
-        messages=[{"role": "system", "content": "Classify the following query into categories 'workouts', 'sleep', or 'other'."},
-                  {"role": "user", "content": query}],
+    response = openai.Completion.create(
+        engine="text-davinci-003",  # Update the engine if using a different one
+        prompt=f"Classify the following query into categories 'workouts', 'sleep', or 'other':\n\n{query}",
+        max_tokens=10,
+        temperature=0.3,
     )
-    classification = response.choices[0].message['content'].strip().lower()
+    # Assuming the first line of the response text is the classification
+    classification = response['choices'][0]['text'].strip().lower()
     return classification
+
 
 def load_data_into_db(csv_path, db_path, table_name):
     engine = create_engine(db_path)
