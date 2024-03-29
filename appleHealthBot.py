@@ -16,7 +16,7 @@ def main():
 
     db = SQLDatabase(engine=engine)
     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-    agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=False)
+    agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=True)
 
     while True:
         user_input = input("Enter your query or 'exit' to quit: ")
