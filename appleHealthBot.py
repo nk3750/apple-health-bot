@@ -5,20 +5,21 @@ from sqlalchemy import create_engine
 from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import create_sql_agent
 from langchain_openai import ChatOpenAI
-import openai
+from openai import OpenAI
 
-import openai
+client = OpenAI(api_key=openai_api_key)
+
+from openai import OpenAI
+
+client = OpenAI(api_key=openai_api_key)
 
 def classify_query(query, openai_api_key):
-    openai.api_key = openai_api_key
-    response = openai.Completion.create(
-        engine="text-davinci-003",  # Update the engine if using a different one
-        prompt=f"Classify the following query into categories 'workouts', 'sleep', or 'other':\n\n{query}",
-        max_tokens=10,
-        temperature=0.3,
-    )
+    response = client.completions.create(engine="text-davinci-003",  # Update the engine if using a different one
+    prompt=f"Classify the following query into categories 'workouts', 'sleep', or 'other':\n\n{query}",
+    max_tokens=10,
+    temperature=0.3)
     # Assuming the first line of the response text is the classification
-    classification = response['choices'][0]['text'].strip().lower()
+    classification = response.choices[0].text.strip().lower()
     return classification
 
 
