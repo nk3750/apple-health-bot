@@ -11,10 +11,12 @@ from openai import OpenAI
 
 def classify_query(query, openai_api_key):
     client = OpenAI(api_key=openai_api_key)
-    response = client.completions.create(engine="text-davinci-003",  # Update the engine if using a different one
-    prompt=f"Classify the following query into categories 'workouts', 'sleep', or 'other':\n\n{query}",
-    max_tokens=10,
-    temperature=0.3)
+    response = client.chat.completions.create(model="text-davinci-003",
+                                         messages=[
+                                             {"role": "system",
+                                              "content": "Classify the following query into categories 'workouts', 'sleep', or 'other':\n\n{query}"}
+                                         ]
+                                         )
     # Assuming the first line of the response text is the classification
     classification = response.choices[0].text.strip().lower()
     return classification
