@@ -7,4 +7,5 @@ python-dotenv
 sqlalchemy
 lxml
 tqdm
+openai
 
