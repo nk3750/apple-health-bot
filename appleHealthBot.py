@@ -7,13 +7,10 @@ from langchain_community.agent_toolkits import create_sql_agent
 from langchain_openai import ChatOpenAI
 from openai import OpenAI
 
-client = OpenAI(api_key=openai_api_key)
 
-from openai import OpenAI
-
-client = OpenAI(api_key=openai_api_key)
 
 def classify_query(query, openai_api_key):
+    client = OpenAI(api_key=openai_api_key)
     response = client.completions.create(engine="text-davinci-003",  # Update the engine if using a different one
     prompt=f"Classify the following query into categories 'workouts', 'sleep', or 'other':\n\n{query}",
     max_tokens=10,
