@@ -5,22 +5,35 @@ from sqlalchemy import create_engine
 from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import create_sql_agent
 from langchain_openai import ChatOpenAI
-from openai import OpenAI
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.messages import HumanMessage
 
 
+def classify_query(query, chat):
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            (
+                "system",
+                "Your job is to classify the following query into categories 'workouts' or 'sleep'. You need to parse "
+                "the query and classify it in to either of these 2 categories, if you are unable to classify, "
+                "say unrelated query",
+            ),
+            MessagesPlaceholder(variable_name="messages"),
+        ]
+    )
 
-def classify_query(query, openai_api_key):
-    client = OpenAI(api_key=openai_api_key)
-    response = client.chat.completions.create(model="gpt-3.5-turbo",
-                                         messages=[
-                                             {"role": "system",
-                                              "content": "Classify the following query into categories 'workouts', 'sleep', or 'other'. The contect should only contain the :\n{query}"}
-                                         ]
-                                         )
-    # Assuming the first line of the response text is the classification
+    chain = prompt | chat
+    response=chain.invoke(
+        {
+            "messages": [
+                HumanMessage(
+                    content=query
+                )
+            ],
+        }
+    )
     print(response)
-    classification = response.choices[0].strip().lower()
-    return classification
+    return response
 
 
 def load_data_into_db(csv_path, db_path, table_name):
@@ -46,7 +59,7 @@ def main():
             break
 
         # Classify the user's query
-        category = classify_query(user_input, openai_api_key)
+        category = classify_query(user_input, llm)
 
         if category in data_paths:
             csv_path, db_path, table_name = data_paths[category]
