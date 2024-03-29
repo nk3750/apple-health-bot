@@ -66,7 +66,7 @@ If the question does not seem related to the database, just return "I don't know
     data_paths = {
         "workouts": ("export_workouts.csv", "sqlite:///workouts.db", "workouts"),
         "sleep": ("export_sleep.csv", "sqlite:///sleep.db", "sleep"),
-        "exerciseTime": ("export_exercise_time.csv", "sqlite:///exerciseTime.db", "exerciseTime")
+        "exerciseTime": ("export_exercise_time.csv", "sqlite:///exerciseTime.db", "exerciseTime"),
     }
 
     while True:
