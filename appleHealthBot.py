@@ -18,6 +18,7 @@ def classify_query(query, openai_api_key):
                                          ]
                                          )
     # Assuming the first line of the response text is the classification
+    print(response)
     classification = response.choices[0].text.strip().lower()
     return classification
 
