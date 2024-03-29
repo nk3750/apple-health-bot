@@ -11,15 +11,15 @@ from openai import OpenAI
 
 def classify_query(query, openai_api_key):
     client = OpenAI(api_key=openai_api_key)
-    response = client.chat.completions.create(model="gpt-3.5-turbo",
+    response = client.chat.completions.create(model="gpt-3.5-turbo-instruct",
                                          messages=[
                                              {"role": "system",
-                                              "content": "Classify the following query into categories 'workouts', 'sleep', or 'other':\n\n{query}"}
+                                              "content": "Classify the following query into categories 'workouts', 'sleep', or 'other'. The contect should only contain the :\n{query}"}
                                          ]
                                          )
     # Assuming the first line of the response text is the classification
     print(response)
-    classification = response.choices[0].text.strip().lower()
+    classification = response.choices[0].strip().lower()
     return classification
 
 
