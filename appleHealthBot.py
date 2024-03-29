@@ -9,13 +9,12 @@ import openai
 
 def classify_query(query, openai_api_key):
     openai.api_key = openai_api_key
-    response = openai.Completion.create(
-        model="text-davinci-003",  # Adjust model as necessary
-        prompt=f"Classify the following query into categories 'workouts', 'sleep', or 'other':\n\n{query}",
-        max_tokens=10,
-        temperature=0.3,
+    response = openai.ChatCompletion.create(
+        model="text-davinci-003",  # Or whichever model you're using
+        messages=[{"role": "system", "content": "Classify the following query into categories 'workouts', 'sleep', or 'other'."},
+                  {"role": "user", "content": query}],
     )
-    classification = response.choices[0].text.strip().lower()
+    classification = response.choices[0].message['content'].strip().lower()
     return classification
 
 def load_data_into_db(csv_path, db_path, table_name):
