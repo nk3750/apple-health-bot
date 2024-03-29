@@ -33,7 +33,7 @@ def classify_query(query, chat):
         }
     )
     print(response)
-    return response.content
+    return response.content.strip("'").strip("'").strip("")
 
 
 def load_data_into_db(csv_path, db_path, table_name):
