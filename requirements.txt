@@ -1,0 +1,10 @@
+langchain
+langchain-openai
+langchain-community
+langchain-experimental
+pandas
+python-dotenv
+sqlalchemy
+lxml
+tqdm
+
