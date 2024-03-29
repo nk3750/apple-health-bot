@@ -11,7 +11,7 @@ from openai import OpenAI
 
 def classify_query(query, openai_api_key):
     client = OpenAI(api_key=openai_api_key)
-    response = client.chat.completions.create(model="text-davinci-003",
+    response = client.chat.completions.create(model="gpt-3.5-turbo",
                                          messages=[
                                              {"role": "system",
                                               "content": "Classify the following query into categories 'workouts', 'sleep', or 'other':\n\n{query}"}
