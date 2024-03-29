@@ -14,16 +14,17 @@ def classify_query(query, chat):
         [
             (
                 "system",
-                "Your job is to classify the following query into categories 'workouts' or 'sleep'. You need to parse "
-                "the query and classify it in to either of these 2 categories, if you are unable to classify, "
-                "say unrelated query",
+                "Your job is to classify the following query into 3 categories 'workouts',  'sleep',  'exerciseTime'. "
+                "You need to parse"
+                "the query and classify it in to either of these 3 categories, if you are unable to classify, "
+                "say unrelated query. For exercise time, the query should ask for time spent exercising or working out.",
             ),
             MessagesPlaceholder(variable_name="messages"),
         ]
     )
 
     chain = prompt | chat
-    response=chain.invoke(
+    response = chain.invoke(
         {
             "messages": [
                 HumanMessage(
@@ -42,6 +43,7 @@ def load_data_into_db(csv_path, db_path, table_name):
     df.to_sql(table_name, engine, index=False, if_exists='replace')
     return engine
 
+
 def main():
     load_dotenv()
     openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -50,7 +52,8 @@ def main():
     # Paths to CSV files and corresponding SQLite databases
     data_paths = {
         "workouts": ("export_workouts.csv", "sqlite:///workouts.db", "workouts"),
-        "sleep": ("export_sleep.csv", "sqlite:///sleep.db", "sleep"),  # Placeholder for sleep data
+        "sleep": ("export_sleep.csv", "sqlite:///sleep.db", "sleep"),
+        "exerciseTime": ("export_exercise_time.csv", "sqlite:///exerciseTime.db", "exerciseTime")
     }
 
     while True:
@@ -74,6 +77,7 @@ def main():
         response = agent_executor.invoke({"input": user_input})
         formatted_response = response.get('output', 'Sorry, I could not process your request.')
         print("\nAI:", formatted_response, "\n")
+
 
 if __name__ == "__main__":
     main()
