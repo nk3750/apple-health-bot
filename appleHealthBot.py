@@ -64,16 +64,16 @@ DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the databa
 
 If the question does not seem related to the database, just return "I don't know" as the answer
     """
-    few_shot_prompt = FewShotPromptTemplate(
-        prefix=system_prompt,
-        suffix="",
-    )
-    full_prompt = ChatPromptTemplate.from_messages(
-        [
-            SystemMessagePromptTemplate(prompt=few_shot_prompt),
-            MessagesPlaceholder("agent_scratchpad"),
-        ]
-    )
+    # few_shot_prompt = FewShotPromptTemplate(
+    #     prefix=system_prompt,
+    #     suffix="",
+    # )
+    # full_prompt = ChatPromptTemplate.from_messages(
+    #     [
+    #         SystemMessagePromptTemplate(prompt=few_shot_prompt),
+    #         MessagesPlaceholder("agent_scratchpad"),
+    #     ]
+    # )
     load_dotenv()
     openai_api_key = os.getenv("OPENAI_API_KEY")
     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key=openai_api_key)
@@ -101,7 +101,8 @@ If the question does not seem related to the database, just return "I don't know
             continue
         print("Processing your request!")
         db = SQLDatabase(engine=engine)
-        agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=False, prompt=full_prompt)
+        agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=False)
+        #prompt = full_prompt
 
         response = agent_executor.invoke({"input": user_input})
         formatted_response = response.get('output', 'Sorry, I could not process your request.')
