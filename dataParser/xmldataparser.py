@@ -1,6 +1,7 @@
 import pandas as pd
 from lxml import etree
 from tqdm import tqdm
+import argparse
 from datetime import datetime
 
 
@@ -134,6 +135,16 @@ def xml_to_csv(xml_file_path):
     print(f"Sleep data saved to {sleep_csv_path}")
 
 
-# Example usage
-xml_file_path = 'export.xml'
-xml_to_csv(xml_file_path)
+def main():
+    # Create the parser
+    parser = argparse.ArgumentParser(description='Converts an XML file to CSV files.')
+    # Add an argument for the XML file path
+    parser.add_argument('xml_file_path', type=str, help='The path to the input XML file')
+    # Parse the command line arguments
+    args = parser.parse_args()
+
+    # Call the xml_to_csv function with the provided XML file path
+    xml_to_csv(args.xml_file_path)
+
+if __name__ == '__main__':
+    main()
