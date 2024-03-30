@@ -61,7 +61,8 @@ def main():
     executing a query, rewrite the query and try again. The exerciseTime db contains the time in minutes, not hours, 
     make sure you do proper unit conversions before answering the query. The workouts table contains distances in 
     miles, not kilometers, make sure you do proper unit conversions when the user asks questions about 5k, 10k, 
-    marathon etc.
+    marathon etc. Don't include cycling activities in queries about hiking. Don't include hiking activities in 
+    queries about running
 
 DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the database.
 
