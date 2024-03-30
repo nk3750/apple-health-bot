@@ -126,12 +126,12 @@ AppleHealthLLMBot automates Apple Health data parsing and bot interactions. It t
 
 ### Setup
 <h4>From <code>AppleHealthLLMBot</code></h4>
-> Add your openAI API key to the .env file
+ Add your openAI API key to the .env file
 > ```console
 > $ vim .env
 > ```
  <h4>Create Docker Image</h4>
-> Let's first create the docker image
+ Let's first create the docker image
 > ```console
 > $ docker build -t healthbot .
 > ```
