@@ -5,7 +5,7 @@ case "$1" in
     parseData)
         # Assuming your XML parsing script is named xml_parsing_script.py and located at /app
         shift  # Shift script arguments (removes the first one, which is 'parseData')
-        python ./xml_parsing_script.py "$@"  # Pass remaining arguments to the script
+        python ./dataParser/xmldataparser.py "$@"  # Pass remaining arguments to the script
         ;;
     healthBot)
         # If your health bot script is appleHealthBot.py and located at /app
