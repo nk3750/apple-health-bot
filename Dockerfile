@@ -11,7 +11,7 @@ RUN pip install --upgrade pip
 COPY ./setup/requirements.txt /app/
 
 # Install any dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r setup/requirements.txt
 
 # Copy the rest of your application's code into the container at /app
 COPY . /app
