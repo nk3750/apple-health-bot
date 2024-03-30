@@ -42,22 +42,6 @@ AppleHealthLLMBot automates Apple Health data parsing and bot interactions. It t
 
 ---
 
-##  Features
-
-|    |   Feature         | Description |
-|----|-------------------|---------------------------------------------------------------|
-| ⚙️  | **Architecture**  |  The project follows a modular architecture that uses Python for data parsing and database interaction within a Docker container setup. It leverages separate scripts for data parsing and bot functionality to optimize performance and maintainability. |
-| 🔩 | **Code Quality**  | The codebase maintains good quality and follows Python coding standards. It uses clear naming conventions and structured code organization to enhance readability and maintainability. |
-| 📄 | **Documentation** | The project includes essential documentation such as setup instructions in the `README.md` and inline comments in the code for better understanding and onboarding of new contributors. Additional detailed documentation can further improve accessibility. |
-| 🔌 | **Integrations**  | Key integrations include SQLAlchemy for database interaction, langchain for language processing, and tqdm for progress tracking. External dependencies like pandas and python-dotenv enhance functionality and data processing capabilities. |
-| 🧩 | **Modularity**    | The codebase demonstrates good modularity by separating data parsing and bot functionalities into distinct scripts. This modular design promotes code reusability and maintainability, allowing for easy updates and enhancements. |
-| 🧪 | **Testing**       | While specific testing frameworks aren't explicitly mentioned, the project can benefit from incorporating unit testing and integration testing to ensure code reliability and behavior consistency across different components. |
-| ⚡️  | **Performance**   | The project showcases efficient data parsing and bot interaction capabilities, ensuring quick processing of Apple Health XML data and providing AI-powered answers. Optimizing resource usage and enhancing speed can further improve overall performance. |
-| 🛡️ | **Security**      | Measures used for data protection and access control include SQL database interaction for user data storage and language processing for secure data handling. Implementing secure coding practices and encryption techniques can enhance overall security measures. |
-| 📦 | **Dependencies**  | Key external libraries and dependencies include SQLAlchemy, langchain, pandas, and tqdm, among others. These dependencies provide essential functionalities for data parsing, language processing, and database interaction within the project. |
-| 🚀 | **Scalability**   | The project's structure and use of Docker containers enable scalability by facilitating seamless deployment and management of additional instances to handle increased traffic and load. Implementing scalability testing can further validate the project's ability to scale efficiently. |
-
----
 
 ##  Repository Structure
 
@@ -118,7 +102,7 @@ AppleHealthLLMBot automates Apple Health data parsing and bot interactions. It t
 
 **System Requirements:**
 
-* **Python**: `version x.y.z`
+* **Docker**: `latest version`
 
 ###  Installation
 
@@ -135,25 +119,35 @@ AppleHealthLLMBot automates Apple Health data parsing and bot interactions. It t
 > $ cd AppleHealthLLMBot
 > ```
 >
-> 3. Install the dependencies:
+> 3. Copy over the export.xml file from the health app and put it inside the project directory.
 > ```console
-> $ pip install -r requirements.txt
+> $ cp /path/to/export.xml .
 > ```
 
+### Setup
+<h4>From <code>AppleHealthLLMBot</code></h4>
+> Add your openAI API key to the .env file
+> ```console
+> $ vim .env
+> ```
+ <h4>Create Docker Image</h4>
+> Let's first create the docker image
+> ```console
+> $ docker build -t healthbot .
+> ```
 ###  Usage
 
-<h4>From <code>source</code></h4>
+<h4>From <code>AppleHealthLLMBot</code></h4>
 
-> Run AppleHealthLLMBot using the command below:
+
+
+<h4>Parse the xml and create csv files</h4>
 > ```console
-> $ python main.py
+> $ docker run -v "$(pwd)":/data healthbot parseData /data/export.xml
 > ```
-
-###  Tests
-
-> Run the test suite using the command below:
+<h4>Start the bot</h4>
 > ```console
-> $ pytest
+> $  docker run -it -v "$(pwd)":/data healthbot healthBot
 > ```
 
 ---
@@ -213,13 +207,13 @@ Contributions are welcome! Here are several ways you can contribute:
 
 ##  License
 
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+This project is protected under the MIT License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
 
 ---
 
 ##  Acknowledgments
 
-- List any resources, contributors, inspiration, etc. here.
+- 
 
 [**Return**](#-overview)
 
