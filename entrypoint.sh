@@ -9,7 +9,7 @@ case "$1" in
         ;;
     healthBot)
         # If your health bot script is appleHealthBot.py and located at /app
-        python ./appleHealthBot.py
+        python ./healthBot/appleHealthBot.py
         ;;
     *)
         echo "Usage: $0 {parseData|healthBot} [args for parseData]"
