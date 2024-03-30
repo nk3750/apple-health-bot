@@ -21,7 +21,10 @@ def classify_query(query, chat):
                 "You need to parse"
                 "the query and classify it in to either of these 3 categories, if you are unable to classify, "
                 "choose workouts by default. For exercise time, the query should ask for time spent exercising or "
-                "working out. The response content should only contain the category name and nothing else.",
+                "working out, don't put every query contain the keyword time in this category, for example if the "
+                "user asks how many times have they run 10k or 5k, the category should be classified as workouts. The "
+                "exerciseTime table only contains data about total time spent exercising a particular day. The "
+                "response content should only contain the category name and nothing else.",
             ),
             MessagesPlaceholder(variable_name="messages"),
         ]
@@ -57,8 +60,8 @@ def main():
     construct your final answer. You MUST double check your query before executing it. If you get an error while 
     executing a query, rewrite the query and try again. The exerciseTime db contains the time in minutes, not hours, 
     make sure you do proper unit conversions before answering the query. The workouts table contains distances in 
-    miles, not kilometers, make sure you do proper unit conversions when the user asks quwstions about 5k, 10k, 
-    marathon etc
+    miles, not kilometers, make sure you do proper unit conversions when the user asks questions about 5k, 10k, 
+    marathon etc.
 
 DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the database.
 
