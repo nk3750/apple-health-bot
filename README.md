@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <h1 align="center">APPLEHEALTHLLMBOT</h1>
-</p>
+
 <p align="center">
     <em>Transforming health data with AI precision.</em>
 </p>
