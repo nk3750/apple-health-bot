@@ -5,7 +5,7 @@
     <h1 align="center">APPLEHEALTHLLMBOT</h1>
 </p>
 <p align="center">
-    <em>Transforming health data into actionable insights effortlessly.</em>
+    <em>Transforming health data with AI precision.</em>
 </p>
 <p align="center">
 	<img src="https://img.shields.io/github/license/nk3750/AppleHealthLLMBot?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
@@ -38,7 +38,7 @@
 
 ##  Overview
 
-AppleHealthLLMBot is a sophisticated software project designed to streamline health data processing within the Apple Health ecosystem. By converting XML health data to CSV, organizing it into DataFrames, and implementing AI models for user query classification, AppleHealthLLMBot offers users intelligent responses regarding workouts, exercise time, and sleep records. Leveraging Docker for environment configuration and OpenAI for enhanced language capabilities, the project enhances the Apple Health bots functionality by providing efficient data parsing, manipulation, and storage for insightful analysis.
+AppleHealthLLMBot automates Apple Health data parsing and bot interactions. It transforms XML data into CSVs via `xmldataparser.py`, ensuring seamless data analysis. The `appleHealthBot.py` categorizes user queries for workouts, sleep, or exerciseTime, storing information in an SQL database. Leveraging AI tools like ChatOpenAI, the bot retrieves and presents data, enhancing user experience and data visualization capabilities. The projects streamlined workflow and data management cater to health enthusiasts seeking efficient health data processing and analysis.
 
 ---
 
@@ -46,16 +46,16 @@ AppleHealthLLMBot is a sophisticated software project designed to streamline hea
 
 |    |   Feature         | Description |
 |----|-------------------|---------------------------------------------------------------|
-| ⚙️ | **Architecture**  | This project follows a modular architecture with a focus on data processing and storage. It leverages Docker for environment setup and organizes data into DataFrames for analysis within the Apple Health bot project structure. |
-| 🔩 | **Code Quality**  | The codebase maintains good quality and style standards. It efficiently integrates with language chain tools, OpenAI, and other dependencies to enhance the bot's functionality. |
-| 📄 | **Documentation** | The project contains essential documentation for setting up and running the bot. However, detailed documentation could be improved for better understanding and onboarding of contributors. |
-| 🔌 | **Integrations**  | Key integrations include language chain tools, OpenAI, and other external dependencies like pandas, lxml, and SQLAlchemy for data manipulation and analysis. |
-| 🧩 | **Modularity**    | The codebase demonstrates good modularity with components like XML data parser, Apple Health bot classifier, and Docker configuration for easy maintenance and reusability. |
-| 🧪 | **Testing**       | Testing frameworks and tools are not explicitly mentioned in the repository contents. Adding testing frameworks could enhance code reliability and maintainability. |
-| ⚡️ | **Performance**   | The project focuses on efficient data processing and storage but lacks specific details on performance metrics. Consideration of performance optimization techniques could further improve efficiency. |
-| 🛡️ | **Security**      | Measures for data protection and access control are not explicitly discussed in the repository details. Implementing secure data handling practices and access controls would enhance the project's security aspect. |
-| 📦 | **Dependencies**  | Key external libraries and dependencies include pandas, lxml, SQLAlchemy, and language chain tools like langchain-experimental and langchain-openai. |
-| 🚀 | **Scalability**   | The project's modularity and integration with language chain tools allow for potential scalability to handle increased data processing and user queries effectively. Scalability considerations for data storage and processing can further enhance performance under increased load. |
+| ⚙️  | **Architecture**  |  The project follows a modular architecture that uses Python for data parsing and database interaction within a Docker container setup. It leverages separate scripts for data parsing and bot functionality to optimize performance and maintainability. |
+| 🔩 | **Code Quality**  | The codebase maintains good quality and follows Python coding standards. It uses clear naming conventions and structured code organization to enhance readability and maintainability. |
+| 📄 | **Documentation** | The project includes essential documentation such as setup instructions in the `README.md` and inline comments in the code for better understanding and onboarding of new contributors. Additional detailed documentation can further improve accessibility. |
+| 🔌 | **Integrations**  | Key integrations include SQLAlchemy for database interaction, langchain for language processing, and tqdm for progress tracking. External dependencies like pandas and python-dotenv enhance functionality and data processing capabilities. |
+| 🧩 | **Modularity**    | The codebase demonstrates good modularity by separating data parsing and bot functionalities into distinct scripts. This modular design promotes code reusability and maintainability, allowing for easy updates and enhancements. |
+| 🧪 | **Testing**       | While specific testing frameworks aren't explicitly mentioned, the project can benefit from incorporating unit testing and integration testing to ensure code reliability and behavior consistency across different components. |
+| ⚡️  | **Performance**   | The project showcases efficient data parsing and bot interaction capabilities, ensuring quick processing of Apple Health XML data and providing AI-powered answers. Optimizing resource usage and enhancing speed can further improve overall performance. |
+| 🛡️ | **Security**      | Measures used for data protection and access control include SQL database interaction for user data storage and language processing for secure data handling. Implementing secure coding practices and encryption techniques can enhance overall security measures. |
+| 📦 | **Dependencies**  | Key external libraries and dependencies include SQLAlchemy, langchain, pandas, and tqdm, among others. These dependencies provide essential functionalities for data parsing, language processing, and database interaction within the project. |
+| 🚀 | **Scalability**   | The project's structure and use of Docker containers enable scalability by facilitating seamless deployment and management of additional instances to handle increased traffic and load. Implementing scalability testing can further validate the project's ability to scale efficiently. |
 
 ---
 
@@ -64,9 +64,15 @@ AppleHealthLLMBot is a sophisticated software project designed to streamline hea
 ```sh
 └── AppleHealthLLMBot/
     ├── Dockerfile
-    ├── appleHealthBot.py
-    ├── requirements.txt
-    └── xmldataparser.py
+    ├── LICENSE
+    ├── README.md
+    ├── dataParser
+    │   └── xmldataparser.py
+    ├── entrypoint.sh
+    ├── healthBot
+    │   └── appleHealthBot.py
+    └── setup
+        └── requirements.txt
 ```
 
 ---
@@ -75,12 +81,34 @@ AppleHealthLLMBot is a sophisticated software project designed to streamline hea
 
 <details closed><summary>.</summary>
 
-| File                                                                                           | Summary                                                                                                                                                                                                                                                                         |
-| ---                                                                                            | ---                                                                                                                                                                                                                                                                             |
-| [xmldataparser.py](https://github.com/nk3750/AppleHealthLLMBot/blob/master/xmldataparser.py)   | Converts XML health data to CSV by parsing workout, exercise time, and sleep records. Saves respective CSV files. Organizes data into DataFrames for analysis. Streamlines data processing and storage for analysis and insights within the Apple Health bot project structure. |
-| [requirements.txt](https://github.com/nk3750/AppleHealthLLMBot/blob/master/requirements.txt)   | Fosters language chain integration with OpenAI, leveraging community and experimental support. Facilitates data parsing, manipulation, and storage efficiently, enhancing Apple Health bot functionality.                                                                       |
-| [Dockerfile](https://github.com/nk3750/AppleHealthLLMBot/blob/master/Dockerfile)               | Configures Python environment in Docker container with dependencies and main script for Apple Health Chatbot.                                                                                                                                                                   |
-| [appleHealthBot.py](https://github.com/nk3750/AppleHealthLLMBot/blob/master/appleHealthBot.py) | Classifies and organizes user queries about workouts, sleep, and exercise time in a SQL database using AI models. Implements data loading into the database and intelligent responses.                                                                                          |
+| File                                                                                   | Summary                                                                                                                                                                                                         |
+| ---                                                                                    | ---                                                                                                                                                                                                             |
+| [entrypoint.sh](https://github.com/nk3750/AppleHealthLLMBot/blob/master/entrypoint.sh) | Executes XML data parsing and runs the Apple Health bot based on the container argument. Parses data using `xmldataparser.py` and the bot using `appleHealthBot.py` within the parent repositorys architecture. |
+| [Dockerfile](https://github.com/nk3750/AppleHealthLLMBot/blob/master/Dockerfile)       | Defines Docker image setup for Python-based application, managing dependencies, and the entrypoint script for seamless container execution in the AppleHealthLLMBot repository.                                 |
+
+</details>
+
+<details closed><summary>setup</summary>
+
+| File                                                                                               | Summary                                                                                                                                                                                          |
+| ---                                                                                                | ---                                                                                                                                                                                              |
+| [requirements.txt](https://github.com/nk3750/AppleHealthLLMBot/blob/master/setup/requirements.txt) | Lists essential dependencies for the project such as langchain, pandas, and sqlalchemy.-Ensures crucial libraries are available for data parsing, language processing, and database interaction. |
+
+</details>
+
+<details closed><summary>healthBot</summary>
+
+| File                                                                                                     | Summary                                                                                                                                                                                                                                    |
+| ---                                                                                                      | ---                                                                                                                                                                                                                                        |
+| [appleHealthBot.py](https://github.com/nk3750/AppleHealthLLMBot/blob/master/healthBot/appleHealthBot.py) | Classifies user queries into workouts, sleep, or exerciseTime categories and loads data to an SQL database based on the category. Interacts with the database, queries relevant data, and provides answers using AI tools like ChatOpenAI. |
+
+</details>
+
+<details closed><summary>dataParser</summary>
+
+| File                                                                                                    | Summary                                                                                                                                                                                                                                                                   |
+| ---                                                                                                     | ---                                                                                                                                                                                                                                                                       |
+| [xmldataparser.py](https://github.com/nk3750/AppleHealthLLMBot/blob/master/dataParser/xmldataparser.py) | Converts Apple Health XML data into structured CSVs by parsing workouts, exercise times, and sleep records. Facilitates analysis and visualization through separate CSV outputs for each data type. Automates the process via CLI input for seamless data transformation. |
 
 </details>
 
