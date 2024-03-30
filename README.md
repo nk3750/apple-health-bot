@@ -1,23 +1,24 @@
-
 <p align="center">
-  <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" alt="project-logo">
+  <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" alt="Project Logo">
 </p>
 
-<h1 align="center">apple-health-bot</h1>
+<h1 align="center">Apple Health Bot</h1>
 
 <p align="center">
-    <em>Helping you understand your health data</em>
+    <em>Demystifying Your Health Data with AI</em>
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/license/nk3750/AppleHealthLLMBot?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-    <img src="https://img.shields.io/github/last-commit/nk3750/AppleHealthLLMBot?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-    <img src="https://img.shields.io/github/languages/top/nk3750/AppleHealthLLMBot?style=default&color=0080ff" alt="repo-top-language">
-    <img src="https://img.shields.io/github/languages/count/nk3750/AppleHealthLLMBot?style=default&color=0080ff" alt="repo-language-count">
+    <img src="https://img.shields.io/github/license/nk3750/AppleHealthLLMBot?style=flat-square&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="License">
+    <img src="https://img.shields.io/github/last-commit/nk3750/AppleHealthLLMBot?style=flat-square&logo=git&logoColor=white&color=0080ff" alt="Last Commit">
+    <img src="https://img.shields.io/github/languages/top/nk3750/AppleHealthLLMBot?style=flat-square&color=0080ff" alt="Top Language">
+    <img src="https://img.shields.io/github/languages/count/nk3750/AppleHealthLLMBot?style=flat-square&color=0080ff" alt="Language Count">
 </p>
-`apple-health-bot` lets you easily query your Apple Health data leveraging OpenAi LLM and RAG over SQL. 
 
-![Health Bot gif demo](img/demo.gif)
+`Apple Health Bot` leverages OpenAI's LLM and RAG over SQL to empower you with insights from your Apple Health data. 
+
+![Health Bot Demo](img/demo.gif)
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -25,21 +26,18 @@
 - [Repository Structure](#repository-structure)
 - [Modules](#modules)
 - [Getting Started](#getting-started)
+  - [Exporting Apple Health Data](#exporting-apple-health-data)
+  - [System Requirements](#system-requirements)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Tests](#tests)
 - [Project Roadmap](#project-roadmap)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
----
-
 ## Overview
 
-apple-health-bot works by converting your apple health export data to CSV and then performing RAG over SQL on top of those CSV to help answer your queries. It transforms XML data into CSVs via `xmldataparser.py`, ensuring seamless data analysis. The `appleHealthBot.py` categorizes user queries for workouts, sleep, or exerciseTime, storing information in an SQL database. Leveraging AI tools like ChatOpenAI, the bot retrieves and presents data, enhancing user experience and data visualization capabilities. The projects streamlined workflow and data management cater to health enthusiasts seeking efficient health data processing and analysis.
-
----
+`Apple Health Bot` transforms your Apple Health export data into analyzable CSV files, leveraging advanced RAG over SQL techniques for nuanced data queries. It simplifies health data management, offering insights into workouts, sleep patterns, and exercise time through intuitive AI-driven interactions.
 
 ## Repository Structure
 
@@ -48,81 +46,78 @@ AppleHealthLLMBot/
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
-├── dataParser
+├── dataParser/
 │   └── xmldataparser.py
 ├── entrypoint.sh
-├── healthBot
+├── healthBot/
 │   └── appleHealthBot.py
-└── setup
+└── setup/
     └── requirements.txt
 ```
 
----
-
 ## Modules
 
-- **entrypoint.sh**: Trigger scripts based on user input
-- **Dockerfile**: Defines Docker image setup for Python-based application.
-- **setup/requirements.txt**: Lists essential dependencies for the project.
-- **healthBot/appleHealthBot.py**: Performs RAG over SQL data using langchain and OpenAI
-- **dataParser/xmldataparser.py**: Converts Apple Health XML data into structured CSVs, to be loaded in to sqlLite DB.
-
----
+- `entrypoint.sh` - Initializes script based on user commands.
+- `Dockerfile` - Constructs Docker image for the Python application.
+- `setup/requirements.txt` - Lists necessary project dependencies.
+- `healthBot/appleHealthBot.py` - Analyzes SQL data with OpenAI and Langchain.
+- `dataParser/xmldataparser.py` - Converts Apple Health XML data into CSVs for SQL database insertion.
 
 ## Getting Started
 
-### Get Your Apple Health Data
+### Exporting Apple Health Data
 
-For instructions on how to export your Apple Health data, please follow the [Apple Support guide](https://support.apple.com/guide/iphone/share-your-health-data-iph5ede58c3d/ios).
+For step-by-step instructions on exporting your data from Apple Health, see the [Apple Support guide](https://support.apple.com/guide/iphone/share-your-health-data-iph5ede58c3d/ios).
 
-Or follow the instructions below
+Alternatively, follow these steps:
 
-![Export Gif](img/export.gif)
+![Export Data](img/export.gif)
 
 ### System Requirements
 
-- **Docker**: Latest version
+- Docker (latest version recommended)
 
 ### Installation
 
 **From Source**
 
 1. Clone the repository:
-   ```
+   ```bash
    git clone https://github.com/nk3750/apple-health-bot.git
    ```
-2. Change to the project directory:
-   ```
+2. Navigate to the project directory:
+   ```bash
    cd apple-health-bot
    ```
-3. Edit the .env file
-   ```
+3. Update the `.env` file with your OpenAI API Key:
+   ```bash
    vim .env
+   # Replace YOUR_OPENAI_API_KEY accordingly
    ```
-   Replace YOUR_OPENAI_API_KEY with your OpenAI API Key
-
-4. Copy the `export.xml` file from the health app to the project directory:
-   ```
+4. Transfer the `export.xml` file from your Health app:
+   ```bash
    cp /path/to/export.xml .
    ```
 
 ### Setup
 
-**Create Docker Image**
+**Docker Image Creation**
 
-1. Build the Docker image:
-   ```
-   docker build -t healthbot .
-   ```
+Build the Docker image:
+```bash
+docker build -t healthbot .
+```
 
 ### Usage
 
-**Parse the XML and Create CSV Files**
+**XML Parsing and CSV Conversion**
 
-```
+Run the parser:
+```bash
 docker run -v "$(pwd)":/data healthbot parseData /data/export.xml
 ```
-This is a long-running process and might take around 8-10 minutes depending on the size of your export.xml file, go get yourself a coffee or something. 
+*Note: This may take some time depending on your `export.xml` size. Consider taking a short break! 
+
 
 This is how it should look like once the script is executed successfully.
 ![Parse](img/parse.png)
