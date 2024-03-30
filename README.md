@@ -89,13 +89,19 @@ Or follow the instructions below
 
 1. Clone the repository:
    ```
-   git clone https://github.com/nk3750/AppleHealthLLMBot
+   git clone https://github.com/nk3750/apple-health-bot.git
    ```
 2. Change to the project directory:
    ```
-   cd AppleHealthLLMBot
+   cd apple-health-bot
    ```
-3. Copy the `export.xml` file from the health app to the project directory:
+3. Edit the .env file
+   ```
+   vim .env
+   ```
+   Replace YOUR_OPENAI_API_KEY with your OpenAI API Key
+
+4. Copy the `export.xml` file from the health app to the project directory:
    ```
    cp /path/to/export.xml .
    ```
