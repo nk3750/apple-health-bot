@@ -3,7 +3,7 @@
   <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" alt="project-logo">
 </p>
 
-<h1 align="center">APPLEHEALTHLLMBOT</h1>
+<h1 align="center">apple-health-bot</h1>
 
 <p align="center">
     <em>Transforming health data with AI precision.</em>
@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/github/languages/top/nk3750/AppleHealthLLMBot?style=default&color=0080ff" alt="repo-top-language">
     <img src="https://img.shields.io/github/languages/count/nk3750/AppleHealthLLMBot?style=default&color=0080ff" alt="repo-language-count">
 </p>
-`healthbot` lets you easily query your Apple Health data leveraging OpenAi LLM and RAG over SQL. 
+`apple-health-bot` lets you easily query your Apple Health data leveraging OpenAi LLM and RAG over SQL. 
 
 ![Health Bot gif demo](img/demo.gif)
 ## Table of Contents
