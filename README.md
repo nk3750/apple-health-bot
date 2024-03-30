@@ -15,7 +15,9 @@
     <img src="https://img.shields.io/github/languages/top/nk3750/AppleHealthLLMBot?style=default&color=0080ff" alt="repo-top-language">
     <img src="https://img.shields.io/github/languages/count/nk3750/AppleHealthLLMBot?style=default&color=0080ff" alt="repo-language-count">
 </p>
+`healthbot` lets you easily query your Apple Health data leveraging OpenAi LLM and RAG over SQL. 
 
+![Health Bot gif demo](img/demo.gif)
 ## Table of Contents
 
 - [Overview](#overview)
