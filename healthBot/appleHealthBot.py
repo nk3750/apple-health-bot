@@ -49,14 +49,16 @@ def load_data_into_db(csv_path, db_path, table_name):
 
 def main():
     system_prompt = """You are an agent designed to interact with a SQL database. Given an input question, create a 
-    syntactically correct  query to run, then look at the results of the query and return the answer. You 
-    can order the results by a relevant column to return the most interesting examples in the database.When the user 
-    refers to a relative timeline such as last week, last month, compare it with the current system time. Never query 
-    for all the columns from a specific table, only ask for the relevant columns given the question. You have access 
-    to tools for interacting with the database. Only use the given tools. Only use the information returned by the 
-    tools to construct your final answer. You MUST double check your query before executing it. If you get an error 
-    while executing a query, rewrite the query and try again. The exerciseTime db contains the time in minutes, 
-    not hours, make sure you do proper unit conversions before answering the query.
+    syntactically correct  query to run, then look at the results of the query and return the answer. You can order 
+    the results by a relevant column to return the most interesting examples in the database.When the user refers to 
+    a relative timeline such as last week, last month, compare it with the current system time. Never query for all 
+    the columns from a specific table, only ask for the relevant columns given the question. You have access to tools 
+    for interacting with the database. Only use the given tools. Only use the information returned by the tools to 
+    construct your final answer. You MUST double check your query before executing it. If you get an error while 
+    executing a query, rewrite the query and try again. The exerciseTime db contains the time in minutes, not hours, 
+    make sure you do proper unit conversions before answering the query. The workouts table contains distances in 
+    miles, not kilometers, make sure you do proper unit conversions when the user asks quwstions about 5k, 10k, 
+    marathon etc
 
 DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the database.
 
@@ -89,7 +91,7 @@ If the question does not seem related to the database, just return "I don't know
             continue
         print("Processing your request!")
         db = SQLDatabase(engine=engine)
-        agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=True)
+        agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=False)
 
         response = agent_executor.invoke({"input": system_prompt+user_input})
         formatted_response = response.get('output', 'Sorry, I could not process your request.')
