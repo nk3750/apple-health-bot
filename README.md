@@ -6,7 +6,7 @@
 <h1 align="center">apple-health-bot</h1>
 
 <p align="center">
-    <em>Transforming health data with AI precision.</em>
+    <em>Helping you understand your health data</em>
 </p>
 
 <p align="center">
@@ -37,7 +37,7 @@
 
 ## Overview
 
-AppleHealthLLMBot automates Apple Health data parsing and bot interactions. It transforms XML data into CSVs via `xmldataparser.py`, ensuring seamless data analysis. The `appleHealthBot.py` categorizes user queries for workouts, sleep, or exerciseTime, storing information in an SQL database. Leveraging AI tools like ChatOpenAI, the bot retrieves and presents data, enhancing user experience and data visualization capabilities. The projects streamlined workflow and data management cater to health enthusiasts seeking efficient health data processing and analysis.
+apple-health-bot works by converting your apple health export data to CSV and then performing RAG over SQL on top of those CSV to help answer your queries. It transforms XML data into CSVs via `xmldataparser.py`, ensuring seamless data analysis. The `appleHealthBot.py` categorizes user queries for workouts, sleep, or exerciseTime, storing information in an SQL database. Leveraging AI tools like ChatOpenAI, the bot retrieves and presents data, enhancing user experience and data visualization capabilities. The projects streamlined workflow and data management cater to health enthusiasts seeking efficient health data processing and analysis.
 
 ---
 
@@ -61,15 +61,23 @@ AppleHealthLLMBot/
 
 ## Modules
 
-- **entrypoint.sh**: Executes XML data parsing and runs the Apple Health bot based on the container argument.
+- **entrypoint.sh**: Trigger scripts based on user input
 - **Dockerfile**: Defines Docker image setup for Python-based application.
 - **setup/requirements.txt**: Lists essential dependencies for the project.
-- **healthBot/appleHealthBot.py**: Classifies user queries into categories and loads data to an SQL database.
-- **dataParser/xmldataparser.py**: Converts Apple Health XML data into structured CSVs.
+- **healthBot/appleHealthBot.py**: Performs RAG over SQL data using langchain and OpenAI
+- **dataParser/xmldataparser.py**: Converts Apple Health XML data into structured CSVs, to be loaded in to sqlLite DB.
 
 ---
 
 ## Getting Started
+
+### Get Your Apple Health Data
+
+For instructions on how to export your Apple Health data, please follow the [Apple Support guide](https://support.apple.com/guide/iphone/share-your-health-data-iph5ede58c3d/ios).
+
+Or follow the instructions below
+
+![Export Gif](img/export.gif)
 
 ### System Requirements
 
@@ -108,20 +116,24 @@ AppleHealthLLMBot/
 ```
 docker run -v "$(pwd)":/data healthbot parseData /data/export.xml
 ```
+This is a long-running process and might take around 8-10 minutes depending on the size of your export.xml file, go get yourself a coffee or something. 
+
+This is how it should look like once the script is executed successfully.
+![Parse](img/parse.png)
 
 **Start the Bot**
 
 ```
 docker run -it -v "$(pwd)":/data healthbot healthBot
 ```
-
+Have fun!
 ---
 
 ## Project Roadmap
 
-- [X] Task 1
-- [ ] Task 2
-- [ ] ...
+- [ ] Fix inaccuracies with the handling of sleep data
+- [ ] Handle complex queries involving sleep and workout
+- [ ] Add testing details
 
 ---
 
