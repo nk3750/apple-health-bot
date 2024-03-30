@@ -62,7 +62,7 @@ def main():
 
 DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the database.
 
-If the question does not seem related to the database, just return "I don't know" as the answer
+If the question does not seem related to the database, just return "I don't know" as the answer. Here is the input:
     """
     # few_shot_prompt = FewShotPromptTemplate(
     #     prefix=system_prompt,
@@ -104,7 +104,7 @@ If the question does not seem related to the database, just return "I don't know
         agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=False)
         #prompt = full_prompt
 
-        response = agent_executor.invoke({"input": user_input})
+        response = agent_executor.invoke({"input": system_prompt+user_input})
         formatted_response = response.get('output', 'Sorry, I could not process your request.')
         print("\nAI:", formatted_response, "\n")
 
