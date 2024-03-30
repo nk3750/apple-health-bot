@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of your application's code into the container at /app
 COPY healthBot /app
-
+RUN ls -la /app/
 # Copy the entrypoint script into the container and make it executable
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
