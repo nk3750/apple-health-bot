@@ -20,7 +20,8 @@ def classify_query(query, chat):
                 "Your job is to classify the following query into 3 categories 'workouts',  'sleep',  'exerciseTime'. "
                 "You need to parse"
                 "the query and classify it in to either of these 3 categories, if you are unable to classify, "
-                "say unrelated query. For exercise time, the query should ask for time spent exercising or working out.",
+                "choose workouts by default. For exercise time, the query should ask for time spent exercising or "
+                "working out.",
             ),
             MessagesPlaceholder(variable_name="messages"),
         ]
