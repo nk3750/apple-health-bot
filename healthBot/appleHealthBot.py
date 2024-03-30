@@ -60,9 +60,9 @@ def main():
     construct your final answer. You MUST double check your query before executing it. If you get an error while 
     executing a query, rewrite the query and try again. The exerciseTime db contains the time in minutes, not hours, 
     make sure you do proper unit conversions before answering the query. The workouts table contains distances in 
-    miles, not kilometers, make sure you do proper unit conversions when the user asks questions about 5k, 10k, 
-    marathon etc. Try not to mix up different activities such as hiking, running, cycling. Narrow down the results to 
-    the specific workout type the user asks for.
+    miles, not kilometers, make sure you do proper unit conversions when the user query contains distance in km. Try 
+    not to mix up different activities such as hiking, running, cycling. Narrow down the results to the specific 
+    workout type the user asks for.
 
 DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the database.
 
