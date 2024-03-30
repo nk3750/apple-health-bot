@@ -32,7 +32,7 @@ def classify_query(query, chat):
             ],
         }
     )
-    print(response)
+    print("Classified the request as ", response.content)
     return response.content.strip("'").strip("'").strip("")
 
 
@@ -83,9 +83,9 @@ If the question does not seem related to the database, just return "I don't know
         else:
             print("\nAI: I'm not sure how to classify your request. Please try again with more detail.\n")
             continue
-
+        print("Processing your request!")
         db = SQLDatabase(engine=engine)
-        agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=True, system_prompt=system_prompt)
+        agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=False, system_prompt=system_prompt)
 
         response = agent_executor.invoke({"input": user_input})
         formatted_response = response.get('output', 'Sorry, I could not process your request.')
