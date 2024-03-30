@@ -21,7 +21,7 @@ def classify_query(query, chat):
                 "You need to parse"
                 "the query and classify it in to either of these 3 categories, if you are unable to classify, "
                 "choose workouts by default. For exercise time, the query should ask for time spent exercising or "
-                "working out.",
+                "working out. The response content should only contain the category name and nothing else.",
             ),
             MessagesPlaceholder(variable_name="messages"),
         ]
