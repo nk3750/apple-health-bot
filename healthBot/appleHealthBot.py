@@ -99,7 +99,8 @@ If the question does not seem related to the database, just return "I don't know
 
         response = agent_executor.invoke({"input": system_prompt+user_input})
         formatted_response = response.get('output', 'Sorry, I could not process your request.')
-        print("\033[95mAppleHealthBot:\033[0m", formatted_response, "\n")
+        # Print the entire response in purple
+        print("\033[95mAppleHealthBot:", formatted_response, "\033[0m\n")
 
 
 if __name__ == "__main__":
