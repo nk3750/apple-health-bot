@@ -89,7 +89,7 @@ If the question does not seem related to the database, just return "I don't know
             continue
         print("Processing your request!")
         db = SQLDatabase(engine=engine)
-        agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=False)
+        agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=True)
 
         response = agent_executor.invoke({"input": system_prompt+user_input})
         formatted_response = response.get('output', 'Sorry, I could not process your request.')
