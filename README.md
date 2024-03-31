@@ -135,6 +135,7 @@ Have fun!
 - [ ] Fix inaccuracies with the handling of sleep data
 - [ ] Handle complex queries involving sleep and workout
 - [ ] Add testing details
+- [ ] Add linting
 
 ---
 
