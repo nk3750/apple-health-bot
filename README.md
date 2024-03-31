@@ -145,6 +145,8 @@ Have fun!
 - [ ] Handle complex queries involving sleep and workout
 - [ ] Add testing details
 - [ ] Add linting
+- [ ] Add Dynamic few-shot prompt 
+- [ ] Add chat history
 
 ---
 
