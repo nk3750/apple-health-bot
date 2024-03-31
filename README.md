@@ -134,6 +134,7 @@ Have fun!
 ## Project Roadmap
 
 - [ ] Fix inaccuracies with the handling of sleep data
+- [ ] Enable real time data sync
 - [ ] Handle complex queries involving sleep and workout
 - [ ] Add testing details
 - [ ] Add linting
