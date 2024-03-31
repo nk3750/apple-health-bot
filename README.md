@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" alt="Project Logo">
+  <img src="./img/logo.webp" width="100" alt="Project Logo">
 </p>
+
 
 <h1 align="center">Apple Health Bot</h1>
 
@@ -15,7 +16,7 @@
     <img src="https://img.shields.io/github/languages/count/nk3750/AppleHealthLLMBot?style=flat-square&color=0080ff" alt="Language Count">
 </p>
 
-`Apple Health Bot` leverages OpenAI's LLM and RAG over SQL to empower you with insights from your Apple Health data. 
+`Apple Health Bot` leverages OpenAI's LLM and langchain RAG over SQL to empower you with insights from your Apple Health data. 
 
 ![Health Bot Demo](img/demo.gif)
 
