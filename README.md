@@ -140,6 +140,7 @@ Have fun!
 ---
 
 ## Contributing
+TODO
 
 Contributions are welcome! Here are several ways you can contribute:
 
@@ -147,5 +148,4 @@ Contributions are welcome! Here are several ways you can contribute:
 - **Submit Pull Requests**: Review open PRs or submit your own.
 - **Join the Discussions**: Share insights or ask questions.
 
-Please follow the [Contributing Guidelines](https://github.com/nk3750/AppleHealthLLMBot)
 ```
