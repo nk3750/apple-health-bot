@@ -40,6 +40,13 @@
 
 `Apple Health Bot` transforms your Apple Health export data into analyzable CSV files, leveraging advanced RAG over SQL techniques for nuanced data queries. It simplifies health data management, offering insights into workouts, sleep patterns, and exercise time through intuitive AI-driven interactions.
 
+## Sequence Diagram
+Here's a quick overview in layman's terms: This diagram illustrates how we turn your natural questions into a format that our system can understand and use to fetch the exact information you're looking for, all in a way that feels like a casual conversation.
+
+
+![Sequence Diagram](./img/sequenceDiag.png)
+
+
 ## Repository Structure
 
 ```
